@@ -1,0 +1,16 @@
+{
+  "name": "thebigone",
+  "version": "0.0.0",
+  "description": "thebigone =========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/WEBdeBS/thebigone.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
