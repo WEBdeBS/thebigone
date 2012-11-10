@@ -8,21 +8,44 @@
         #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBKVTfyoEeTYBf2ou92L85S15mFpWHdQ8&sensor=false">
+            src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyBBKVTfyoEeTYBf2ou92L85S15mFpWHdQ8&sensor=false">
     </script>
-    <script type="text/javascript">
-        function initialize() {
-            var mapOptions = {
-                center: new google.maps.LatLng(41.910964, 12.46114),
-                zoom: 8,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("map_canvas"),
-                    mapOptions);
-        }
-    </script>
+
 </head>
 <body onload="initialize()">
 <div id="map_canvas" style="width:100%; height:100%"></div>
+<script type="text/javascript">
+
+function initialize() {
+    var heatmapData = [
+        {location: new google.maps.LatLng(41.910964, 12.473), weight: 0.5},
+        new google.maps.LatLng(41.910964, 12.471),
+        {location: new google.maps.LatLng(41.910964, 12.471), weight: 2},
+        {location: new google.maps.LatLng(41.910964, 12.474), weight: 3},
+        {location: new google.maps.LatLng(41.910964, 12.476), weight: 2},
+        {location: new google.maps.LatLng(41.910964, 12.479), weight: 0.5},
+        {location: new google.maps.LatLng(41.910964, 12.478), weight: 0.5},
+        {location: new google.maps.LatLng(41.910964, 12.481), weight: 0.5},
+        {location: new google.maps.LatLng(41.910964, 12.483), weight: 0.5},
+        {location: new google.maps.LatLng(41.910964, 12.484), weight: 0.5},
+        {location: new google.maps.LatLng(41.910964, 12.498), weight: 3},
+        {location: new google.maps.LatLng(41.910964, 12.499), weight: 2},
+        {location: new google.maps.LatLng(41.910964, 12.500), weight: 0.5}
+    ];
+
+
+    map = new google.maps.Map(document.getElementById('map_canvas'), {
+        center: new google.maps.LatLng(41.910964, 12.46114),
+        zoom: 8,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var heatmap = new google.maps.visualization.HeatmapLayer({
+        data: heatmapData
+    });
+    heatmap.setMap(map);
+}
+
+</script>
 </body>
 </html>
