@@ -3,9 +3,7 @@
 {% block content %}
 <article>
 	<aside>
-		<div id="map_wrapper" ng-controller="mapDataController">
-			<button ng-click="addHeatPoint()">add</button>
-			<span style="display:none;">{{ updateMap() }}</span>
+		<div id="map_wrapper">
 		</div>
 	</aside>
 	<section>
