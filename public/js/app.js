@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	var BO_namespace = {};
+	BO_namespace.map = "";
+
 	var sockjs_url = '/echo';
 	var sockjs = new SockJS(sockjs_url);
 
@@ -13,5 +16,14 @@ $(document).ready(function() {
 	sockjs.onclose   = function()  {
 		console.log('[*] close');
 	};
+
+
+	BO_namespace.map = new google.maps.Map(
+		document.getElementById("map_canvas"), {
+		center: new google.maps.LatLng(41.910964, 12.46114),
+		zoom: 12,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	});
+
 
 });
