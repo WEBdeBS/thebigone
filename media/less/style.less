@@ -1,0 +1,124 @@
+/////////////////////////////////////////////////////// DEFINITIONS //////////////////////////////////
+
+
+//........ FUNCTIONS  ...............................
+
+@import "definitions.less";
+@import "resets.less";
+
+
+//........ VARIABLES ...............................
+
+@header_height: 80px;
+
+
+/////////////////////////////////////////////////////// COMMON PROPERTIES ////////////////////
+
+
+//............................... OVERALL DEFINITIONS ..........
+
+html {
+	-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; // prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g
+}
+
+body {
+	// layout
+	position: relative;
+	// formatting
+	font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+	text-align: left;
+	color: #222222;
+	background: #FFFFFF;
+}
+
+
+//............................... CLEARFIX ........
+
+// [1] = classic
+.clearfix{
+	&:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+}
+
+// [2] = vertical fill (h5bp.com/q)
+.clearfix_fill {
+	zoom: 1;
+	&:before, &:after { display: table; content: ""; }
+	&:after { clear: both; }
+}
+
+
+//............................... LINKS ..........
+
+a, a:hover, a:active, a:visited {
+	// formatting
+	color: pink;
+	&.noevid { color: inherit; }
+	}
+
+
+//............................... IMAGES ..........
+
+// img interpolation with IE7
+img { -ms-interpolation-mode: bicubic; }
+
+
+/////////////////////////////////////////////////////// MAIN DEFINITIONS //////////////
+
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0 }
+
+header {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: @header_height - 1px;
+	z-index: 100;
+	background: #D2ECF5 url(/media/img/logo.png) no-repeat 18px 6px;
+	border-bottom: 4px solid #C4C4C4;
+	hgroup {
+		position: absolute;
+		top: 34px;
+		right: 30px;
+		h1 {
+			height: 24px;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 800;
+			font-style: italic;
+			font-size: 18px;
+			line-height: 1em;
+			letter-spacing: -1px;
+			color: #333333;
+		}
+	}
+}
+
+article {
+	width: 100%;
+	height: 100%;
+	padding-top: @header_height;
+	z-index: 80;
+	.clearfix;
+
+	> aside {
+		position: absolute;
+		display: block;
+		width: 320px;
+		height: 100%;
+		background: #E4E4E4;
+		border-right: 1px solid #FFFFFF;
+	}
+
+	> section {
+		display: block;
+		width: 100%;
+		height: 100%;
+		padding-left: 320px;
+		#map_canvas { width: 100%; height: 100% }
+
+	}
+
+}
+
+

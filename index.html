@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+
+    <meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800'>
+    <link rel="stylesheet" href="/media/css/style.css">
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyBBKVTfyoEeTYBf2ou92L85S15mFpWHdQ8&sensor=false"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script src="angular.js"></script>
+    <script src="angular-resource.js"></script>
+    <script src="mapDataController.js"></script>
+
+    <script type="text/javascript">
+
+		BO_namespace = {};
+		BO_namespace.map = "";
+	
+		$(document).ready(function mapSetup() {
+	
+			BO_namespace.map = new google.maps.Map(
+				document.getElementById("map_canvas"), {
+				center: new google.maps.LatLng(41.910964, 12.46114),
+				zoom: 12,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			});
+	
+		});
+
+    </script>
+
+</head>
+<body>
+
+	<header>
+		<hgroup>
+			<h1>Centrale operativa</h1>
+		</hgroup>
+	</header>
+	<article>
+		<aside>
+			<div id="map_wrapper" ng-controller="mapDataController">
+				<button ng-click="addHeatPoint()">add</button>
+				<span style="display:none;">{{ updateMap() }}</span>
+			</div>
+		</aside>
+		<section>
+			<div id="map_canvas"></div>
+		</section>
+	</article>
+
+</body>
+</html>
