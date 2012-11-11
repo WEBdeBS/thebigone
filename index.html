@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html ng-app>
 <head>
-<<<<<<< HEAD
 
     <meta charset="utf-8">
 
@@ -11,9 +10,32 @@
     <link rel="stylesheet" href="/media/css/style.css">
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyBBKVTfyoEeTYBf2ou92L85S15mFpWHdQ8&sensor=false"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script src="angular.js"></script>
+    <script src="angular-resource.js"></script>
+    <script src="mapDataController.js"></script>
+
+    <script type="text/javascript">
+
+		BO_namespace = {};
+		BO_namespace.map = "";
+	
+		$(document).ready(function mapSetup() {
+	
+			BO_namespace.map = new google.maps.Map(
+				document.getElementById("map_canvas"), {
+				center: new google.maps.LatLng(41.910964, 12.46114),
+				zoom: 12,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			});
+	
+		});
+
+    </script>
 
 </head>
-<body onload="initialize()">
+<body>
 
 	<header>
 		<hgroup>
@@ -22,90 +44,15 @@
 	</header>
 	<article>
 		<aside>
+			<div id="map_wrapper" ng-controller="mapDataController">
+				<button ng-click="addHeatPoint()">add</button>
+				<span style="display:none;">{{ updateMap() }}</span>
+			</div>
 		</aside>
 		<section>
 			<div id="map_canvas"></div>
 		</section>
 	</article>
-
-	<script type="text/javascript">
-	
-	function initialize() {
-		var heatmapData = [
-			{location: new google.maps.LatLng(41.910964, 12.473), weight: 0.5},
-			new google.maps.LatLng(41.910964, 12.471),
-			{location: new google.maps.LatLng(41.910964, 12.471), weight: 2},
-			{location: new google.maps.LatLng(41.910964, 12.474), weight: 3},
-			{location: new google.maps.LatLng(41.910964, 12.476), weight: 2},
-			{location: new google.maps.LatLng(41.910964, 12.479), weight: 0.5},
-			{location: new google.maps.LatLng(41.910964, 12.478), weight: 0.5},
-			{location: new google.maps.LatLng(41.910964, 12.481), weight: 0.5},
-			{location: new google.maps.LatLng(41.910964, 12.483), weight: 0.5},
-			{location: new google.maps.LatLng(41.910964, 12.484), weight: 0.5},
-			{location: new google.maps.LatLng(41.910964, 12.498), weight: 3},
-			{location: new google.maps.LatLng(41.910964, 12.499), weight: 2},
-			{location: new google.maps.LatLng(41.910964, 12.500), weight: 0.5}
-		];
-	
-	
-		map = new google.maps.Map(document.getElementById('map_canvas'), {
-			center: new google.maps.LatLng(41.910964, 12.46114),
-			zoom: 12,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		});
-	
-		var heatmap = new google.maps.visualization.HeatmapLayer({
-			data: heatmapData
-		});
-		heatmap.setMap(map);
-	}
-	
-	</script>
-=======
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <style type="text/css">
-        html { height: 100% }
-        body { height: 100%; margin: 0; padding: 0 }
-        #map_canvas { width: 300px; height: 300px; }
-    </style>
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyBBKVTfyoEeTYBf2ou92L85S15mFpWHdQ8&sensor=false">
-
-    </script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
-    </script>
-    <script src="angular.js"></script>
-    <script src="angular-resource.js"></script>
-    <script src="mapDataController.js"></script>
-
-    <script type="text/javascript">
-    BO_namespace = {};
-    BO_namespace.map = "";
-
-    $(document).ready(function mapSetup() {
-
-        BO_namespace.map = new google.maps.Map(
-            document.getElementById("map_canvas"), {
-            center: new google.maps.LatLng(41.910964, 12.46114),
-            zoom: 4,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-
-    });
-
-    </script>
-
-</head>
-<body>
-
-<div id="map_canvas"></div>
-
-<div id="map_wrapper" ng-controller="mapDataController">
-    <button ng-click="addHeatPoint()">add</button>
-    <span style="display:none;">{{ updateMap() }}</span>
-</div>
->>>>>>> d5eabe0c2b3f8948b173d8f3531089e37a09e225
 
 </body>
 </html>
