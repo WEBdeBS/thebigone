@@ -36,9 +36,14 @@ function mapDataController($scope) {
 	};
 
 	$scope.addHeatPoint = function() {
-		$scope.heatmapData.push(
-			{location: new google.maps.LatLng(44.910964, 20.500), weight: 200}
-		);
+		window.setInterval(function() {
+			console.log("adding heat point...");
+			$scope.heatmapData.push({
+					location: new google.maps.LatLng(43, 13),
+					weight: 2
+				}
+			);
+		}, 1000);
 	};
 
 }
