@@ -6,8 +6,13 @@ var app = TheBigOne(config);
 
 var Twitter = require('./lib/twitter');
 var twitter = Twitter(config);
-var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ];
-var stream = twitter.stream('statuses/filter', { locations: sanFrancisco });
+
+var Lat1 = -1;
+var Lang1 = 51;
+var Lat2 = 1;
+var Lang2 = 52;
+
+var stream = twitter.stream('statuses/filter', { locations: [ Lat1, Lang1, Lat2, Lang2 ] });
 
 var sockjs = require('./lib/socket.js')(config, stream);
 
