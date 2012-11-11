@@ -1,0 +1,8 @@
+auth:
+  twitter:
+    consumer_key: 'pe05dUdkmW8NgIZvJediug'
+    consumer_secret: 'Gti38yKby9tvftjr1WmQt2FxqELGWW94EQCMbH9NZ4'
+    access_token_key: '143900133-jVlZGcRjupPaIODDwF1x9W4OFRD3uQqhfxCIXjpZ'
+    access_token_secret: 'h57yzz7OB2M12JEMtDspzL5j9IQyUwQ2pgXzuRUh40'
+
+#blacklist: []
