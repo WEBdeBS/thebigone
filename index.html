@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800'>
     <link rel="stylesheet" href="/media/css/style.css">
 
     <script type="text/javascript"
@@ -22,11 +23,11 @@
 		</hgroup>
 	</header>
 	<article>
+		<aside>
+		</aside>
 		<section>
 			<div id="map_canvas"></div>
 		</section>
-		<aside>
-		</aside>
 	</article>
 
 	<script type="text/javascript">
@@ -51,7 +52,7 @@
 	
 		map = new google.maps.Map(document.getElementById('map_canvas'), {
 			center: new google.maps.LatLng(41.910964, 12.46114),
-			zoom: 8,
+			zoom: 12,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		});
 	
