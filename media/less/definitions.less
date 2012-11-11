@@ -1,0 +1,212 @@
+/////////////////////////////////////////////////////// LESS DECLARATIONS //////////////////////////////////
+
+
+//........ MIXINS ...............................
+
+.mx_is_centered() {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.mx_fill_parent() {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.mx_hide_text (@indent: -9999px) {
+	text-indent: @indent;
+	overflow: hidden;
+}
+
+.mx_nolink_text () {
+	text-decoration: none;
+	&:hover { text-decoration: underline; }
+}
+
+.mx_noselect_text () {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.mx_grid (@width: 5%, @space: 1.25%) {
+
+	// set column properties
+	@column: @width;	// The columns-width of the grid
+	@gutter: @space;	// The left-padding of the cells
+	
+	// store column-widths as variables
+	 @1cols: ( 1 * (@column + @gutter) - @gutter); /*@1col: @1cols;*/
+	 @2cols: ( 2 * (@column + @gutter) - @gutter);
+	 @3cols: ( 3 * (@column + @gutter) - @gutter);
+	 @4cols: ( 4 * (@column + @gutter) - @gutter);
+	 @5cols: ( 5 * (@column + @gutter) - @gutter);
+	 @6cols: ( 6 * (@column + @gutter) - @gutter);
+	 @7cols: ( 7 * (@column + @gutter) - @gutter);
+	 @8cols: ( 8 * (@column + @gutter) - @gutter);
+	 @9cols: ( 9 * (@column + @gutter) - @gutter);
+	@10cols: (10 * (@column + @gutter) - @gutter);
+	@11cols: (11 * (@column + @gutter) - @gutter);
+	@12cols: (12 * (@column + @gutter) - @gutter);
+	@13cols: (13 * (@column + @gutter) - @gutter);
+	@14cols: (14 * (@column + @gutter) - @gutter);
+	@15cols: (15 * (@column + @gutter) - @gutter);
+	@16cols: (16 * (@column + @gutter) - @gutter);
+
+	// column base-grid
+	.width-1 	{ width:  @1cols; }
+	.width-2 	{ width:  @2cols; }
+	.width-3 	{ width:  @3cols; }
+	.width-4 	{ width:  @4cols; }
+	.width-5 	{ width:  @5cols; }
+	.width-6 	{ width:  @6cols; }
+	.width-7 	{ width:  @7cols; }
+	.width-8 	{ width:  @8cols; }
+	.width-9 	{ width:  @9cols; }
+	.width-10	{ width: @10cols; }
+	.width-11	{ width: @11cols; }
+	.width-12	{ width: @12cols; }
+	.width-13	{ width: @13cols; }
+	.width-14	{ width: @14cols; }
+	.width-15	{ width: @15cols; }
+	.width-16	{ width: @16cols; }
+
+	// column offsets
+	.shift-1 	{ left:  @1cols + @gutter; }
+	.shift-2 	{ left:  @2cols + @gutter; }
+	.shift-3 	{ left:  @3cols + @gutter; }
+	.shift-4 	{ left:  @4cols + @gutter; }
+	.shift-5 	{ left:  @5cols + @gutter; }
+	.shift-6 	{ left:  @6cols + @gutter; }
+	.shift-7 	{ left:  @7cols + @gutter; }
+	.shift-8 	{ left:  @8cols + @gutter; }
+	.shift-9 	{ left:  @9cols + @gutter; }
+	.shift-10	{ left: @10cols + @gutter; }
+	.shift-11	{ left: @11cols + @gutter; }
+	.shift-12	{ left: @12cols + @gutter; }
+	.shift-13	{ left: @13cols + @gutter; }
+	.shift-14	{ left: @14cols + @gutter; }
+	.shift-15	{ left: @15cols + @gutter; }
+	
+	// absolute positioning
+	.abs-tl { position: absolute; top: 0px; left: 0px; }
+	.abs-tr { position: absolute; top: 0px; right: 0px; }
+	.abs-bl { position: absolute; bottom: 0px; left: 0px; }
+	.abs-br { position: absolute; bottom: 0px; right: 0px; }
+
+	// row + column declarations
+	.row { .mx_grid_row(); }
+	.row .column { .mx_grid_column(@gutter); }
+
+}
+
+.mx_grid_row() {
+	// layout;
+	position: relative;
+	width: 100%;
+	/*margin-bottom: 20px;*/
+	.clearfix();
+}
+
+.mx_grid_column(@margin: 5%) {
+	position: relative;
+	float: left;
+	display: inline;
+	margin-right: @margin;
+}
+
+
+
+//........ css3 shorthands ........
+
+.mx_border_radius(@radius) {
+	-webkit-border-radius: @radius; -webkit-background-clip: padding-box;
+	-moz-border-radius: @radius; -moz-background-clip: padding-box;
+	border-radius: @radius; background-clip: padding-box;
+}
+
+.mx_box_shadow(@shadow: 0 1px 3px rgba(0,0,0,0.25)) {
+	-webkit-box-shadow: @shadow;
+	-moz-box-shadow: @shadow;
+	box-shadow: @shadow;
+}
+
+.mx_opacity(@opacity: 100) {
+	filter: e(%("alpha(opacity=%d)", @opacity));
+	-khtml-opacity: @opacity / 100;
+	-moz-opacity: @opacity / 100;
+	opacity: @opacity / 100;
+}
+
+.mx_background_size(@size) {
+	-webkit-background-size: @size;
+	-moz-background-size: @size;
+	background-size: @size;
+}
+
+.mx_background_color_alpha(@color: #FFFFFF, @alpha: 1) {
+    background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+}
+
+.mx_border_color_alpha(@color: #FFFFFF, @alpha: 1) {
+		border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+		background-clip: padding-box;
+}
+
+.mx_transition(@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	transition: @transition;
+}
+
+
+//........ gradients ........
+
+.mx_gradient_horizontal (@startColor: #555, @endColor: #333) {
+	background-color: @endColor;
+	background-repeat: repeat-x;
+	background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor)); // Konqueror
+	background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+	background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
+	background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+	background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+	-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor); // IE8+
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE6 & IE7
+	background-image: linear-gradient(left, @startColor, @endColor); // The standard
+}
+.mx_gradient_vertical (@startColor: #555, @endColor: #333) {
+	background-color: @endColor;
+	background-repeat: repeat-x;
+	background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
+	background-image: -moz-linear-gradient(@startColor, @endColor); // FF 3.6+
+	background-image: -ms-linear-gradient(@startColor, @endColor); // IE10
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
+	background-image: -webkit-linear-gradient(@startColor, @endColor); // Safari 5.1+, Chrome 10+
+	background-image: -o-linear-gradient(@startColor, @endColor); // Opera 11.10
+	-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor); // IE8+
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE6 & IE7
+	background-image: linear-gradient(@startColor, @endColor); // The standard
+}
+.mx_gradient_directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
+	background-color: @endColor;
+	background-repeat: repeat-x;
+	background-image: -moz-linear-gradient(@deg, @startColor, @endColor); // FF 3.6+
+	background-image: -ms-linear-gradient(@deg, @startColor, @endColor); // IE10
+	background-image: -webkit-linear-gradient(@deg, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+	background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
+	background-image: linear-gradient(@deg, @startColor, @endColor); // The standard
+}
+.mx_gradient_vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+	background-color: @endColor;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+	background-image: -webkit-linear-gradient(@startColor, color-stop(@colorStop, @midColor), @endColor);
+	background-image: -moz-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+	background-image: -ms-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+	background-image: -o-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+	background-image: linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+}
