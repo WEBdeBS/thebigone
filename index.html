@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
+<<<<<<< HEAD
 
     <meta charset="utf-8">
 
@@ -60,6 +61,51 @@
 	}
 	
 	</script>
+=======
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        html { height: 100% }
+        body { height: 100%; margin: 0; padding: 0 }
+        #map_canvas { width: 300px; height: 300px; }
+    </style>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyBBKVTfyoEeTYBf2ou92L85S15mFpWHdQ8&sensor=false">
+
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script src="angular.js"></script>
+    <script src="angular-resource.js"></script>
+    <script src="mapDataController.js"></script>
+
+    <script type="text/javascript">
+    BO_namespace = {};
+    BO_namespace.map = "";
+
+    $(document).ready(function mapSetup() {
+
+        BO_namespace.map = new google.maps.Map(
+            document.getElementById("map_canvas"), {
+            center: new google.maps.LatLng(41.910964, 12.46114),
+            zoom: 4,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+    });
+
+    </script>
+
+</head>
+<body>
+
+<div id="map_canvas"></div>
+
+<div id="map_wrapper" ng-controller="mapDataController">
+    <button ng-click="addHeatPoint()">add</button>
+    <span style="display:none;">{{ updateMap() }}</span>
+</div>
+>>>>>>> d5eabe0c2b3f8948b173d8f3531089e37a09e225
 
 </body>
 </html>
